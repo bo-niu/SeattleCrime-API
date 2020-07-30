@@ -5,7 +5,7 @@ const GraphQLDate = new GraphQLScalarType({
   name: 'GraphQLDate',
   description: 'A Date() type in GraphQL as a scalar',
   serialize(value) {
-    return value.toISOString();
+    return value.toISOString();// into a string
   },
 
   parseValue(value) {
