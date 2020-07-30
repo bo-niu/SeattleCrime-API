@@ -1,5 +1,48 @@
 scalar GraphQLDate
 
+enum CrimeYear {
+  2011
+  2012
+  2013
+  2014
+  2015
+  2016
+}
+
+enum CrimeType {
+  Assault
+  Bias Incident
+  Disorderly Conduct
+  DUI
+  Burglary
+  Homicide
+  Injury
+  Liquor Violation
+  Narcotics
+  Pickpocket
+  Robbery
+}
+
+enum CrimePrecinct {
+  B
+  C
+  D
+  E
+  F
+  G
+  J
+  K
+  L
+  M
+  N
+  O
+  Q
+  R
+  S
+  U
+  W
+}
+
 enum StatusType {
   New
   Assigned
