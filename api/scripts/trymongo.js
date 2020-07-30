@@ -1,4 +1,4 @@
-const url = process.env.DB_URL || 'mongodb://localhost/issuetracker';
+const url = process.env.DB_URL || 'mongodb://localhost/SeattleCrime';
 const { MongoClient } = require('mongodb');
 
 function testWithCallbacks(callback) {
