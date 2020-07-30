@@ -1,11 +1,25 @@
 const { getDb } = require('./db.js');
 
-async function filtrateCrimes({
-  startDate, endDate, district, beat,
-}) {
+async function filtrateCrimes(_, { input }) {
+  // const {
+  //   startDate, endDate, district, beat,
+  // } = args;
+  // const { endDate } = args;
+  // const {district} = args;
+  // const {beat} = args;
+  // const startDate = input.startDate;
+  // const endDate = input.endDate;
+  // const district = input.district;
+  // const beat = input.beat;
+  const {
+    startDate, endDate, district, beat,
+  } = input;
   const db = getDb();
   const andList = [];
+  console.log('enter async function filtrateCrimes(_, args)');
+  console.log(input);
   if (startDate) {
+    console.log('enter if (startDate)');
     andList.push({
       OffenseStartDate: {
         $gte: startDate.toISOString(),
@@ -13,6 +27,7 @@ async function filtrateCrimes({
     });
   }
   if (endDate) {
+    console.log('enter if (endDate)');
     andList.push({
       OffenseStartDate: {
         $lt: endDate.toISOString(),
@@ -20,19 +35,27 @@ async function filtrateCrimes({
     });
   }
   if (district) {
+    console.log('enter if (district)');
     andList.push({
       District: district,
     });
   }
   if (beat) {
+    console.log('enter if (beat)');
     andList.push({
       Beat: beat,
     });
   }
-  const result = db.collection('crimes').find({
+  return db.collection('crimes').find({
     $and: andList,
-  });
-  return result.value;
+  }).toArray(
+  //   (err, result) => {
+  //   if (err) throw err;
+  //   console.log('result:\n', result);
+  // }
+  );
+  // console.log('andList:\n', andList);
+  // return null;
 }
 
 module.exports = filtrateCrimes;

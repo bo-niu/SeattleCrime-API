@@ -23,5 +23,5 @@ input FilterInput {
 #### Top level declarations
 
 type Query {
-  filtrateCrimes: [Crime]
+  filtrateCrimes(input: FilterInput): [Crime]
 }
