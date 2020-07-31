@@ -1,6 +1,6 @@
 scalar GraphQLDate
 
-<<<<<<< HEAD
+
 type Crime {
   OffenseType: String
   OffenseDescription: String
@@ -11,7 +11,7 @@ type Crime {
   CensusTract: String
   Longitude: Float
   Latitude: Float
-=======
+
 enum CrimeYear {
   2011
   2012
@@ -85,7 +85,6 @@ type IssueCounts {
 type IssueListWithPages {
   issues: [Issue!]!
   pages: Int
->>>>>>> 30a5733b5dda88fe7e9ba2ad075738ec5844e430
 }
 
 type User {
@@ -110,8 +109,6 @@ type Query {
   user: User!
   filtrateCrimes(input: FilterInput): [Crime]
 }
-<<<<<<< HEAD
-=======
 
 type Mutation {
   setAboutMessage(message: String!): String
@@ -120,4 +117,4 @@ type Mutation {
   issueDelete(id: Int!): Boolean!
   issueRestore(id: Int!): Boolean!
 }
->>>>>>> 30a5733b5dda88fe7e9ba2ad075738ec5844e430
+
