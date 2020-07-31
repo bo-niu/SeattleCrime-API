@@ -18,11 +18,11 @@ async function filtrateCrimes(_, { input }) {
   const andList = [];
   console.log('enter async function filtrateCrimes(_, args)');
   console.log(input);
-  if (startDate) {
+  if (startDate && endDate) {
     console.log('enter if (startDate)');
     andList.push({
       OffenseStartDate: {
-        $gte: startDate.toISOString(),
+        $gte: startDate,
       },
     });
   }
@@ -30,7 +30,7 @@ async function filtrateCrimes(_, { input }) {
     console.log('enter if (endDate)');
     andList.push({
       OffenseStartDate: {
-        $lt: endDate.toISOString(),
+        $lt: endDate,
       },
     });
   }
@@ -46,14 +46,21 @@ async function filtrateCrimes(_, { input }) {
       Beat: beat,
     });
   }
-  return db.collection('crimes').find({
+  console.log('andList:');
+  console.log(andList);
+
+  const result = await db.collection('crimes').find({
+  // db.collection('crimes').find({
     $and: andList,
   }).toArray(
-  //   (err, result) => {
-  //   if (err) throw err;
-  //   console.log('result:\n', result);
-  // }
+    // (err, result) => {
+    //   if (err) console.log(err);
+    //   console.log('result:\n', result);
+    // },
   );
+  console.log('result:');
+  return result;
+
   // console.log('andList:\n', andList);
   // return null;
 }

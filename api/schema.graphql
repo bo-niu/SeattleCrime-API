@@ -12,6 +12,13 @@ type Crime {
   Latitude: Float
 }
 
+type User {
+  signedIn: Boolean!
+  givenName: String
+  name: String
+  email: String
+}
+
 "Input for the Home page's Filter"
 input FilterInput {
   startDate: GraphQLDate
@@ -23,5 +30,7 @@ input FilterInput {
 #### Top level declarations
 
 type Query {
+  about: String!
+  user: User!
   filtrateCrimes(input: FilterInput): [Crime]
 }
