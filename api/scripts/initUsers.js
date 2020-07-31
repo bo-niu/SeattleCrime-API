@@ -1,15 +1,25 @@
+// mongo seattleCrimeUsers scripts/initUsers.js
+// mongo 'mongodb+srv://groupRobot:groupRobot123@cluster0.5uweu.mongodb.net/seattleCrimeUsers?retryWrites=true&w=majority' scripts/initUsers.js
 db.seattleCrimeUsers.remove({});
 
 const usersDB = [
   {
     id: 1,
     name: 'Tom',
-    role: 'Admin',
+    email: 'test1@test.com',
+    comments: {
+      content: 'Lorem ipsum',
+      created: new Date("2016-05-18T16:00:00Z"),
+    }
   },
   {
     id: 2,
     name: 'Jack',
-    role: 'User',
+    email: 'test2@test.com',
+    comments: {
+      content: 'Lorem ipsum',
+      time: new Date("2017-05-18T16:00:00Z"),
+    }
   },
 ];
 

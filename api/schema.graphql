@@ -27,7 +27,7 @@ enum CrimeType {
   Robbery
 }
 
-enum CrimePrecinct {
+enum CrimeDistrict {
   B
   C
   D
@@ -69,10 +69,19 @@ input FilterInput {
   beat: String
 }
 
+"Input for the Report page's Filter"
+input ReportInput {
+  startDate: GraphQLDate
+  endDate: GraphQLDate
+  offensetype: String
+  district: String
+}
+
 #### Top level declarations
 
 type Query {
   about: String!
   user: User!
   filtrateCrimes(input: FilterInput): [Crime]
+  reportFilter(input: ReportInput): [Crime]
 }
