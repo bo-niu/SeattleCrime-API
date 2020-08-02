@@ -5,9 +5,14 @@ async function addUser(_, { input }) {
     name, email
   } = input;
   const db = getDb();
+  const isUserExist = await db.collection('seattleCrimeUsers').findOne({email: email});
+  if(isUserExist) {
+    console.log("User existed!");
+    return;
+  }
   const newUser = Object.assign({}, input)
   newUser.id = await getNextSequence('seattleCrimeUsers');
-  newUser.comments = {};
+  newUser.comments = [];
 
   const result = await db.collection('seattleCrimeUsers').insertOne(newUser);
   return result;
@@ -20,7 +25,6 @@ async function postComment(_, { email, content }) {
   const result = await db.collection('seattleCrimeUsers').update({email: email}, {"$push": {
     comments: {content: content, created: currentime}
   }});
-  console.log(result);
   return result;
 }
 

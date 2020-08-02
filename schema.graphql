@@ -59,7 +59,7 @@ type User {
   givenName: String
   name: String
   email: String
-  comment: [Comment]
+  comment: [Comment!]
 }
 
 type Comment {
