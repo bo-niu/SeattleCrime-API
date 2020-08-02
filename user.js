@@ -13,4 +13,15 @@ async function addUser(_, { input }) {
   return result;
 }
 
-module.exports = addUser;
+async function postComment(_, { email, content }) {
+  const db = getDb();
+  const currentime = new Date(new Date().getTime());
+  //const curComments = await db.collection('seattleCrimeUsers').findOne({email: email}).comments;
+  const result = await db.collection('seattleCrimeUsers').update({email: email}, {"$push": {
+    comments: {content: content, created: currentime}
+  }});
+  console.log(result);
+  return result;
+}
+
+module.exports = {addUser, postComment};

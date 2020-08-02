@@ -7,19 +7,19 @@ const usersDB = [
     id: 1,
     name: 'Tom',
     email: 'test1@test.com',
-    comments: {
+    comments: [{
       content: 'Lorem ipsum',
       created: new Date("2016-05-18T16:00:00Z"),
-    }
+    }]
   },
   {
     id: 2,
     name: 'Jack',
     email: 'test2@test.com',
-    comments: {
+    comments: [{
       content: 'Lorem ipsum',
       time: new Date("2017-05-18T16:00:00Z"),
-    }
+    }]
   },
 ];
 
