@@ -59,6 +59,22 @@ type User {
   givenName: String
   name: String
   email: String
+  comment: [Comment!]
+}
+
+type Comment {
+  content: String
+  created: GraphQLDate
+}
+
+input UserInput {
+  name: String
+  email: String
+}
+
+input CommentInput {
+  content: String
+  created: GraphQLDate
 }
 
 "Input for the Home page's Filter"
@@ -86,4 +102,9 @@ type Query {
   crimeCount(input: FilterInput): Int!
   testCount(input: Int): Int!
   reportFilter(input: ReportInput): [Crime]
+}
+
+type Mutation {
+  userAdd(input: UserInput): User
+  postComment(email: String!, content: String!) : User
 }
