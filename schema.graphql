@@ -83,5 +83,6 @@ type Query {
   about: String!
   user: User!
   filtrateCrimes(input: FilterInput): [Crime]
+  crimeCount(input: FilterInput): Int!
   reportFilter(input: ReportInput): [Crime]
 }
