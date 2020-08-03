@@ -6,8 +6,8 @@ async function filtrateCrimes(_, { input }) {
   } = input;
   const db = getDb();
   const andList = [];
-  console.log('enter async function filtrateCrimes(_, args)');
-  console.log(input);
+  // console.log('enter async function filtrateCrimes(_, args)');
+  // console.log(input);
   if (startDate && endDate) {
     andList.push({
       OffenseStartDate: {
@@ -32,8 +32,8 @@ async function filtrateCrimes(_, { input }) {
       Beat: beat,
     });
   }
-  console.log('andList:');
-  console.log(andList);
+  // console.log('andList:');
+  // console.log(andList);
 
   const result = await db.collection('crimes').find({
   // db.collection('crimes').find({
@@ -44,7 +44,7 @@ async function filtrateCrimes(_, { input }) {
     //   console.log('result:\n', result);
     // },
   );
-  console.log('result:');
+  // console.log('result:');
   return result;
 
   // console.log('andList:\n', andList);
@@ -89,4 +89,9 @@ async function crimeCount(_, { input }) {
   return result;
 }
 
-module.exports = { filtrateCrimes, crimeCount };
+async function testCount(_, input) {
+  console.log(input);
+  return 5;
+}
+
+module.exports = { filtrateCrimes, crimeCount, testCount };

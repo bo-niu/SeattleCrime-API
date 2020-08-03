@@ -5,7 +5,7 @@ const { ApolloServer } = require('apollo-server-express');
 const GraphQLDate = require('./graphql_date.js');
 const about = require('./about.js');
 const auth = require('./auth.js');
-const { filtrateCrimes, crimeCount } = require('./homeFilter.js');
+const { filtrateCrimes, crimeCount, testCount } = require('./homeFilter.js');
 const reportFilter = require('./reportFilter.js');
 
 function getContext({ req }) {
@@ -38,6 +38,7 @@ const resolvers = {
     filtrateCrimes,
     reportFilter,
     crimeCount,
+    testCount,
   },
   GraphQLDate,
 };

@@ -84,5 +84,6 @@ type Query {
   user: User!
   filtrateCrimes(input: FilterInput): [Crime]
   crimeCount(input: FilterInput): Int!
+  testCount(input: Int): Int!
   reportFilter(input: ReportInput): [Crime]
 }
