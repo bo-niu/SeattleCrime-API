@@ -2,7 +2,7 @@ const { getDb } = require('./db.js');
 
 async function filtrateCrimes(_, { input }) {
   const {
-    startDate, endDate, district, beat,
+    startDate, endDate, district, beat, type,
   } = input;
   const db = getDb();
   const andList = [];
@@ -20,6 +20,11 @@ async function filtrateCrimes(_, { input }) {
       OffenseStartDate: {
         $lt: endDate,
       },
+    });
+  }
+  if (type !== 'All') {
+    andList.push({
+      OffenseDescription: type,
     });
   }
   if (district !== 'All') {
@@ -46,6 +51,7 @@ async function filtrateCrimes(_, { input }) {
     // },
   );
   // console.log('result:');
+  // console.log(result);
   return result;
 
   // console.log('andList:\n', andList);
@@ -54,7 +60,7 @@ async function filtrateCrimes(_, { input }) {
 
 async function crimeCount(_, { input }) {
   const {
-    startDate, endDate, district, beat,
+    startDate, endDate, district, beat, type,
   } = input;
   const db = getDb();
   const andList = [];
@@ -72,16 +78,23 @@ async function crimeCount(_, { input }) {
       },
     });
   }
-  if (district) {
+  if (type !== 'All') {
+    andList.push({
+      OffenseDescription: type,
+    });
+  }
+  if (district !== 'All') {
     andList.push({
       District: district,
     });
+    if (beat !== 'All') {
+      andList.push({
+        Beat: beat,
+      });
+    }
   }
-  if (beat) {
-    andList.push({
-      Beat: beat,
-    });
-  }
+  console.log('andList:');
+  console.log(andList);
   const result = await db.collection('crimes').find({
   // db.collection('crimes').find({
     $and: andList,

@@ -2,6 +2,7 @@ scalar GraphQLDate
 
 
 type Crime {
+  _id: String
   OffenseType: String
   OffenseDescription: String
   ReportDate: GraphQLDate
@@ -83,6 +84,7 @@ input FilterInput {
   endDate: GraphQLDate
   district: String
   beat: String
+  type: String
 }
 
 "Input for the Report page's Filter"

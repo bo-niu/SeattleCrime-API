@@ -43,7 +43,7 @@ const resolvers = {
   },
   Mutation: {
     userAdd: user.addUser,
-    postComment: user.postComment
+    postComment: user.postComment,
   },
   GraphQLDate,
 };
