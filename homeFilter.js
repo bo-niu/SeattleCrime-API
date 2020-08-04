@@ -24,7 +24,7 @@ async function filtrateCrimes(_, { input }) {
   }
   if (type !== 'All') {
     andList.push({
-      OffenseDescription: type,
+      OffenseType: type,
     });
   }
   if (district !== 'All') {
@@ -80,7 +80,7 @@ async function crimeCount(_, { input }) {
   }
   if (type !== 'All') {
     andList.push({
-      OffenseDescription: type,
+      OffenseType: type,
     });
   }
   if (district !== 'All') {
