@@ -9,6 +9,8 @@ type Crime {
   OffenseStartDate: GraphQLDate
   OffenseEndDate: GraphQLDate
   Block: String
+  District: String
+  Beat: String
   CensusTract: String
   Longitude: Float
   Latitude: Float
