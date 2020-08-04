@@ -8,7 +8,7 @@ async function filtrateCrimes(_, { input }) {
   const andList = [];
   // console.log('enter async function filtrateCrimes(_, args)');
   // console.log(input);
-  if (startDate && endDate) {
+  if (startDate) {
     andList.push({
       OffenseStartDate: {
         $gte: startDate,
@@ -22,16 +22,17 @@ async function filtrateCrimes(_, { input }) {
       },
     });
   }
-  if (district) {
+  if (district !== 'All') {
     andList.push({
       District: district,
     });
+    if (beat !== 'All') {
+      andList.push({
+        Beat: beat,
+      });
+    }
   }
-  if (beat) {
-    andList.push({
-      Beat: beat,
-    });
-  }
+
   // console.log('andList:');
   // console.log(andList);
 
