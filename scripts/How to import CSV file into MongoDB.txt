@@ -3,8 +3,8 @@
 
 Import to MongoDB Atlas:
 
-mongoimport --uri "mongodb+srv://groupRobot:groupRobot123@cluster0.5uweu.mongodb.net/seattleCrime?retryWrites=true&w=majority" --collection crimes --type=csv --columnsHaveTypes --fields="OffenseType.string(),OffenseDescription.string(),ReportDate.date(2006-01-02 15:04:05),OffenseStartDate.date(2006-01-02 15:04:05),OffenseEndDate.date(2006-01-02 15:04:05),Block.string(),District.string(),Beat.string(),CensusTract.string(),Longitude.double(),Latitude.double()" --drop --file="C:/delete/importCSV/SeattleCrime-GroupRobot.csv" --ignoreBlanks
+mongoimport --uri "mongodb+srv://groupRobot:groupRobot123@cluster0.5uweu.mongodb.net/seattleCrime?retryWrites=true&w=majority" --collection crimes --type=csv --columnsHaveTypes --fields="OffenseDescription.string(),OffenseType.string(),ReportDate.date(2006-01-02 15:04:05),OffenseStartDate.date(2006-01-02 15:04:05),OffenseEndDate.date(2006-01-02 15:04:05),Block.string(),District.string(),Beat.string(),CensusTract.string(),Longitude.double(),Latitude.double()" --drop --file="C:/delete/importCSV/SeattleCrime-GroupRobot.csv" --ignoreBlanks
 
 Import to Local MongoDB:
 
-mongoimport --db=seattleCrime --collection=crimes --type=csv --columnsHaveTypes --fields="OffenseType.string(),OffenseDescription.string(),ReportDate.date(2006-01-02 15:04:05),OffenseStartDate.date(2006-01-02 15:04:05),OffenseEndDate.date(2006-01-02 15:04:05),Block.string(),District.string(),Beat.string(),CensusTract.string(),Longitude.double(),Latitude.double()"  --drop --file="C:\Google NEU\CS5610 Web Development\Project\data\SeattleCrime-GroupRobot.csv" --ignoreBlanks
+mongoimport --db=seattleCrime --collection=crimes --type=csv --columnsHaveTypes --fields="OffenseDescription.string(),OffenseType.string(),ReportDate.date(2006-01-02 15:04:05),OffenseStartDate.date(2006-01-02 15:04:05),OffenseEndDate.date(2006-01-02 15:04:05),Block.string(),District.string(),Beat.string(),CensusTract.string(),Longitude.double(),Latitude.double()"  --drop --file="C:\Google NEU\CS5610 Web Development\Project\data\SeattleCrime-GroupRobot.csv" --ignoreBlanks
