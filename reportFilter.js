@@ -1,25 +1,12 @@
 const { getDb } = require('./db.js');
 
-async function reportFilter(_, { input }) {
-  // const {
-  //   startDate, endDate, district, beat,
-  // } = args;
-  // const { endDate } = args;
-  // const {district} = args;
-  // const {beat} = args;
-  // const startDate = input.startDate;
-  // const endDate = input.endDate;
-  // const district = input.district;
-  // const beat = input.beat;
+async function getCrimeCountEveryYear(_, { input }) {
   const {
-    startDate, endDate, offensetype, district,
+    startDate, endDate, district, beat, type,
   } = input;
   const db = getDb();
   const andList = [];
-  console.log('enter async function filtrateCrimes(_, args)');
-  console.log(input);
-  if (startDate && endDate) {
-    console.log('enter if (startDate)');
+  if (startDate) {
     andList.push({
       OffenseStartDate: {
         $gte: startDate,
@@ -27,42 +14,64 @@ async function reportFilter(_, { input }) {
     });
   }
   if (endDate) {
-    console.log('enter if (endDate)');
     andList.push({
       OffenseStartDate: {
         $lt: endDate,
       },
     });
   }
-  if (offensetype) {
-    console.log('enter if (offensetype)');
+  if (type !== 'All') {
     andList.push({
-      OffenseType: offensetype,
+      OffenseType: type,
     });
   }
-  if (district) {
-    console.log('enter if (district)');
+  if (district !== 'All') {
     andList.push({
       District: district,
     });
+    if (beat !== 'All') {
+      andList.push({
+        Beat: beat,
+      });
+    }
   }
-  console.log('andList:');
-  console.log(andList);
+  // const result = await db.collection('crimes').find({
+  //   $and: andList,
+  // }).aggregate([
+  //   {
+  //     $sort: { year: 1 },
+  //   },
+  //   {
+  //     $group: {
+  //       _id: {
+  //         year: { $year: '$OffenseStartDate' },
+  //       },
+  //       count: { $sum: 1 },
+  //     },
+  //   },
+  // ]).toArray();
 
-  const result = await db.collection('crimes').find({
-  // db.collection('crimes').find({
-    $and: andList,
-  }).toArray(
-    // (err, result) => {
-    //   if (err) console.log(err);
-    //   console.log('result:\n', result);
-    // },
-  );
-  console.log('result:');
+  const result = await db.collection('crimes').aggregate([
+    {
+      $match: {
+        $and: andList,
+      },
+    },
+    {
+      $group: {
+        _id: {
+          year: { $year: '$OffenseStartDate' },
+        },
+        count: { $sum: 1 },
+      },
+    },
+    {
+      $sort: { year: 1 },
+    }
+  ]).toArray();
+  console.log('report Filter result: getCrimeCountEveryYear');
+  console.log(result);
   return result;
-
-  // console.log('andList:\n', andList);
-  // return null;
 }
 
-module.exports = reportFilter;
+module.exports = { getCrimeCountEveryYear };

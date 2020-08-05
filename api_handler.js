@@ -6,7 +6,8 @@ const GraphQLDate = require('./graphql_date.js');
 const about = require('./about.js');
 const auth = require('./auth.js');
 const { filtrateCrimes, crimeCount, testCount } = require('./homeFilter.js');
-const reportFilter = require('./reportFilter.js');
+const { getCrimeCountEveryYear } = require('./reportFilter.js');
+const { getCrimeByID } = require('./discussionFilter.js');
 const user = require('./user.js');
 
 function getContext({ req }) {
@@ -14,32 +15,15 @@ function getContext({ req }) {
   return { user };
 }
 
-// const resolvers = {
-//   Query: {
-//     about: about.getMessage,
-//     user: auth.resolveUser,
-//     issueList: issue.list,
-//     issue: issue.get,
-//     issueCounts: issue.counts,
-//   },
-//   Mutation: {
-//     setAboutMessage: about.setMessage,
-//     issueAdd: issue.add,
-//     issueUpdate: issue.update,
-//     issueDelete: issue.delete,
-//     issueRestore: issue.restore,
-//   },
-//   GraphQLDate,
-// };
-
 const resolvers = {
   Query: {
     about: about.getMessage,
     user: auth.resolveUser,
     filtrateCrimes,
-    reportFilter,
+    getCrimeCountEveryYear,
     crimeCount,
     testCount,
+    getCrimeByID,
   },
   Mutation: {
     userAdd: user.addUser,

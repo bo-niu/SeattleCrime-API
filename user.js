@@ -28,4 +28,4 @@ async function postComment(_, { email, content }) {
   return result;
 }
 
-module.exports = {addUser, postComment};
+module.exports = { addUser, postComment };
