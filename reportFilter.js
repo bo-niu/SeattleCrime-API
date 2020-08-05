@@ -62,12 +62,13 @@ async function getCrimeCountEveryYear(_, { input }) {
         _id: {
           year: { $year: '$OffenseStartDate' },
         },
+        year: { $first: { $year: '$OffenseStartDate' } },
         count: { $sum: 1 },
       },
     },
     {
       $sort: { year: 1 },
-    }
+    },
   ]).toArray();
   console.log('report Filter result: getCrimeCountEveryYear');
   console.log(result);

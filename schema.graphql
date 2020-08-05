@@ -94,12 +94,21 @@ input FilterInput {
   type: String
 }
 
+#### "Input for the Report page's Filter"
+#### input ReportInput {
+####   startDate: GraphQLDate
+####   endDate: GraphQLDate
+####   offensetype: String
+####   district: String
+#### }
+
 "Input for the Report page's Filter"
 input ReportInput {
   startDate: GraphQLDate
   endDate: GraphQLDate
-  offensetype: String
   district: String
+  beat: String
+  type: String
 }
 
 #### Top level declarations
@@ -112,7 +121,7 @@ type Query {
   testCount(input: Int): Int!
   reportFilter(input: ReportInput): [Crime]
   getCrimeByID(crimeID: Int!): Crime
-  getCrimeCountEveryYear(input: FilterInput): [CountVSYear]
+  getCrimeCountEveryYear(input: ReportInput): [CountVSYear]
 }
 
 type Mutation {
