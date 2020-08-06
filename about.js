@@ -1,6 +1,6 @@
 const { mustBeSignedIn } = require('./auth.js');
 
-let aboutMessage = 'Issue Tracker API v1.0';
+let aboutMessage = 'Seattle Crime API v1.0';
 
 function setMessage(_, { message }) {
   aboutMessage = message;
