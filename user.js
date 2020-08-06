@@ -12,19 +12,21 @@ async function addUser(_, { input }) {
   }
   const newUser = Object.assign({}, input)
   newUser.id = await getNextSequence('seattleCrimeUsers');
-  newUser.comments = [];
 
   const result = await db.collection('seattleCrimeUsers').insertOne(newUser);
   return result;
 }
 
-async function postComment(_, { email, content }) {
+async function postComment(_, { input }) {
+  const {
+    email, crimeid, content
+  } = input;
   const db = getDb();
   const currentime = new Date(new Date().getTime());
   //const curComments = await db.collection('seattleCrimeUsers').findOne({email: email}).comments;
-  const result = await db.collection('seattleCrimeUsers').update({email: email}, {"$push": {
-    comments: {content: content, created: currentime}
-  }});
+  const newComment = Object.assign({}, input);
+  newComment.created = currentime;
+  const result = db.collection('seattleCrimeComments').insertOne(newComment);
   return result;
 }
 
