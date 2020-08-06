@@ -7,7 +7,7 @@ const about = require('./about.js');
 const auth = require('./auth.js');
 const { filtrateCrimes, crimeCount, testCount } = require('./homeFilter.js');
 const { getCrimeCountEveryYear } = require('./reportFilter.js');
-const { getCrimeByID } = require('./discussionFilter.js');
+const { getCrimeByID, getCommentByCrimeID } = require('./discussionFilter.js');
 const user = require('./user.js');
 
 function getContext({ req }) {
@@ -24,6 +24,7 @@ const resolvers = {
     crimeCount,
     testCount,
     getCrimeByID,
+    getCommentByCrimeID
   },
   Mutation: {
     userAdd: user.addUser,

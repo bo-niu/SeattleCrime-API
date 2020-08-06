@@ -125,6 +125,7 @@ type Query {
   reportFilter(input: ReportInput): [Crime]
   getCrimeByID(crimeID: Int!): Crime
   getCrimeCountEveryYear(input: ReportInput): [CountVSYear]
+  getCommentByCrimeID(input: String): [Comment]
 }
 
 type Mutation {

@@ -8,4 +8,12 @@ async function getCrimeByID(_, { crimeID }) {
   return result;
 }
 
-module.exports = { getCrimeByID };
+async function getCommentByCrimeID(_, { input }) {
+  const db = getDb();
+  const result = await db.collection('seattleCrimeComments').find({
+    crimeid: input,
+  }).toArray();
+  return result;
+}
+
+module.exports = { getCrimeByID, getCommentByCrimeID };
