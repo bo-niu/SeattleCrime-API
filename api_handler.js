@@ -24,7 +24,7 @@ const resolvers = {
     crimeCount,
     testCount,
     getCrimeByID,
-    getCommentByCrimeID
+    getCommentByCrimeID,
   },
   Mutation: {
     userAdd: user.addUser,

@@ -70,8 +70,6 @@ async function getCrimeCountEveryYear(_, { input }) {
       $sort: { year: 1 },
     },
   ]).toArray();
-  console.log('report Filter result: getCrimeCountEveryYear');
-  console.log(result);
   return result;
 }
 

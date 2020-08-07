@@ -7,8 +7,8 @@ async function getCrimeByID(_, { crimeID }) {
   const result = await db.collection('crimes').findOne({
     _id: new ObjectId(crimeID),
   });
-  console.log('getCrimeByID result:');
-  console.log(result);
+  // console.log('getCrimeByID result:');
+  // console.log(result);
   return result;
 }
 

@@ -18,12 +18,9 @@ async function addUser(_, { input }) {
 }
 
 async function postComment(_, { input }) {
-  const {
-    email, crimeid, content
-  } = input;
   const db = getDb();
   const currentime = new Date(new Date().getTime());
-  //const curComments = await db.collection('seattleCrimeUsers').findOne({email: email}).comments;
+  // const curComments = await db.collection('seattleCrimeUsers').findOne({email: email}).comments;
   const newComment = Object.assign({}, input);
   newComment.created = currentime;
   const result = db.collection('seattleCrimeComments').insertOne(newComment);

@@ -66,6 +66,7 @@ type User {
 
 type Comment {
   email: String
+  givenName: String
   crimeid: String
   content: String
   created: GraphQLDate
@@ -82,10 +83,10 @@ input UserInput {
 }
 
 input CommentInput {
-  email: String
-  crimeid: String
-  content: String
-  created: GraphQLDate
+  email: String!
+  givenName: String!
+  crimeid: String!
+  content: String!
 }
 
 "Input for the Home page's Filter"

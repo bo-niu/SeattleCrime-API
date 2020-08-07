@@ -93,13 +93,10 @@ async function crimeCount(_, { input }) {
       });
     }
   }
-  console.log('andList:');
-  console.log(andList);
   const result = await db.collection('crimes').find({
   // db.collection('crimes').find({
     $and: andList,
   }).count();
-  console.log(`count: ${result}`);
   return result;
 }
 
