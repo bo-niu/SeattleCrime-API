@@ -1,10 +1,14 @@
+const ObjectId = require('mongodb').ObjectID;
 const { getDb } = require('./db.js');
+
 
 async function getCrimeByID(_, { crimeID }) {
   const db = getDb();
-  const result = await db.collection('crimes').find({
-    _id: crimeID,
+  const result = await db.collection('crimes').findOne({
+    _id: new ObjectId(crimeID),
   });
+  console.log('getCrimeByID result:');
+  console.log(result);
   return result;
 }
 
