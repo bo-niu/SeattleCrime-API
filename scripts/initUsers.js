@@ -28,14 +28,14 @@ const commentsDB = [
     email: 'test1@test.com',
     crimeid: '5f2a9f2a0c115a7bf2dc6396',
     content: 'Lorem ipsum',
-    created: new Date("2016-05-18T16:00:00Z"),
+    created: new Date('2016-05-18T16:00:00Z'),
   },
   {
     email: 'test2@test.com',
     crimeid: '5f2a9f2a0c115a7bf2dc6396',
     content: 'Lorem ipsum',
-    created: new Date("2017-05-18T16:00:00Z"),
+    created: new Date('2017-05-18T16:00:00Z'),
   },
-]
+];
 
 db.seattleCrimeComments.insertMany(commentsDB);

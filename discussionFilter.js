@@ -16,7 +16,7 @@ async function getCommentByCrimeID(_, { input }) {
   const db = getDb();
   const result = await db.collection('seattleCrimeComments').find({
     crimeid: input,
-  }).sort({created: -1}).toArray();
+  }).sort({ created: -1 }).toArray();
   return result;
 }
 

@@ -2,15 +2,15 @@ const { getDb, getNextSequence } = require('./db.js');
 
 async function addUser(_, { input }) {
   const {
-    name, email
+    name, email,
   } = input;
   const db = getDb();
-  const isUserExist = await db.collection('seattleCrimeUsers').findOne({email: email});
-  if(isUserExist) {
-    console.log("User existed!");
+  const isUserExist = await db.collection('seattleCrimeUsers').findOne({ email });
+  if (isUserExist) {
+    console.log('User existed!');
     return;
   }
-  const newUser = Object.assign({}, input)
+  const newUser = Object.assign({}, input);
   newUser.id = await getNextSequence('seattleCrimeUsers');
 
   const result = await db.collection('seattleCrimeUsers').insertOne(newUser);
