@@ -11,8 +11,8 @@ const { getCrimeByID, getCommentByCrimeID } = require('./discussionFilter.js');
 const user = require('./user.js');
 
 function getContext({ req }) {
-  const user = auth.getUser(req);
-  return { user };
+  const userc = auth.getUser(req);
+  return { userc };
 }
 
 const resolvers = {

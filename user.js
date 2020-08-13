@@ -2,7 +2,7 @@ const { getDb, getNextSequence } = require('./db.js');
 
 async function addUser(_, { input }) {
   const {
-    name, email,
+    email,
   } = input;
   const db = getDb();
   const isUserExist = await db.collection('seattleCrimeUsers').findOne({ email });
@@ -13,8 +13,9 @@ async function addUser(_, { input }) {
   const newUser = Object.assign({}, input);
   newUser.id = await getNextSequence('seattleCrimeUsers');
 
-  const result = await db.collection('seattleCrimeUsers').insertOne(newUser);
-  return result;
+  await db.collection('seattleCrimeUsers').insertOne(newUser);
+  // const result = await db.collection('seattleCrimeUsers').insertOne(newUser);
+  // return result;
 }
 
 async function postComment(_, { input }) {

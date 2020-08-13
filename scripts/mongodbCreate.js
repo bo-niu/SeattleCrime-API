@@ -13,8 +13,8 @@ url = 'mongodb://localhost:27017/';
 MongoClient.connect(url, (err, db) => {
   if (err) throw err;
   const dbo = db.db('seattleCrime');
-  dbo.createCollection('discussion', (err, res) => {
-    if (err) throw err;
+  dbo.createCollection('discussion', (error) => {
+    if (error) throw error;
     console.log('Collection created!');
     db.close();
   });
