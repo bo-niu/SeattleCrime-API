@@ -8,7 +8,7 @@ const auth = require('./auth.js');
 const { filtrateCrimes, crimeCount, testCount } = require('./homeFilter.js');
 const { getCrimeCountEveryYear } = require('./reportFilter.js');
 const { getCrimeByID, getCommentByCrimeID } = require('./discussionFilter.js');
-const userFunc = require('./user.js');
+const user = require('./user.js');
 
 function getContext({ req }) {
   const user = auth.getUser(req);
@@ -27,8 +27,8 @@ const resolvers = {
     getCommentByCrimeID,
   },
   Mutation: {
-    userAdd: userFunc.addUser,
-    postComment: userFunc.postComment,
+    userAdd: user.addUser,
+    postComment: user.postComment,
   },
   GraphQLDate,
 };
