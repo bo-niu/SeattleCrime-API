@@ -1,5 +1,9 @@
 // mongo seattleCrime scripts/initUsers.js
 // mongo 'mongodb+srv://groupRobot:groupRobot123@cluster0.5uweu.mongodb.net/seattleCrime?retryWrites=true&w=majority' scripts/initUsers.js
+
+/* global db print */
+/* eslint no-restricted-globals: "off" */
+
 db.seattleCrimeUsers.remove({});
 db.seattleCrimeComments.remove({});
 
