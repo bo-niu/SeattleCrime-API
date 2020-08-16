@@ -1,12 +1,9 @@
-# Group Robot
-Team Members:
+# Seattle Crime API
 
-Yifei Wang
+Hi, this is the API repo of the [Seattle Crime website.](https://seattle-crime-bo.herokuapp.com/)
 
-Bo Niu
+This repo provides the interface of MongoDB via GraphQL. 
 
-Surendra Lama
+Go to this [link](https://seattle-crime-api-bo.herokuapp.com/graphql) to check the GraphQL schema.
 
-Christopher Tso
-
-[UI repo](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_Robot_UI)
+[UI repo](https://github.com/bo-niu/SeattleCrime-UI.git)
